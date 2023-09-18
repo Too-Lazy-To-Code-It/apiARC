@@ -20,10 +20,13 @@ export let animes = async () => {
 
 
 
+
 export let showAnime = async () => {
     let Animes = await animes();
     Animes.forEach(anime => {
-        console.log(anime);
 
+        if ((anime.title.toLowerCase()).includes("slam"))
+            console.log(anime.title);
+        
     });
 }
