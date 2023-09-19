@@ -5,12 +5,12 @@ let options = document.querySelector('select');
 
 options.addEventListener("change", function () {
 
-    if (options.value == 0) {
+    if (options.value == 1) {
         f.row.innerHTML = '';
         f.showData(f.ApiAgents);
 
     }
-    else if (options.value == 1) {
+    else if (options.value == 2) {
         f.row.innerHTML = '';
         f.showData(f.ApiWeapons);
     }

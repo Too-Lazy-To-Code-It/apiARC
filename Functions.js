@@ -23,6 +23,7 @@ let ObjectCard = (Object) => {
     let EL = document.createElement("div");
     EL.classList.add("card");
     EL.style.width = "18rem";
+    EL.style.margin="20px";
 
     let AgentImg = document.createElement("img");
     AgentImg.classList.add("card-img-top");
@@ -72,7 +73,7 @@ export let Welcome = () => {
     pickImg.style.height = "600px";
     pickImg.style.width = "600px";
     let options = document.createElement("select");
-    const optionValues = ["Agents", "Weapons", "Skins", "Ranks"];
+    const optionValues = ["--Select--","Agents", "Weapons", "Skins", "Rank"];
 
 
     optionValues.forEach((value, index) => {
