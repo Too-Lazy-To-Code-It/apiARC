@@ -1,7 +1,6 @@
 import * as f from './Functions.js';
 
-f.showAnime();
+f.showAgents();
 
 
-let name="adam";
 
