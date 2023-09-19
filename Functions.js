@@ -67,7 +67,7 @@ export let showData = async (url) => {
 };
 
 export let Welcome = () => {
-    let choice = 0;
+    let welcomeUwU = document.createElement("div");
     let pickImg = document.createElement("img");
     pickImg.src = "./1661130727752034.gif";
     pickImg.style.height = "600px";
@@ -87,8 +87,9 @@ export let Welcome = () => {
     let pick = document.createElement("h1");
     pick.textContent = "Welcome to valoranti would you pick what you want to see ? ";
 
-    document.body.appendChild(pickImg);
-    document.body.appendChild(pick);
-    document.body.appendChild(options);
+    row.parentNode.insertBefore(welcomeUwU,row);
+    welcomeUwU.appendChild(pickImg);
+    welcomeUwU.appendChild(pick);
+    welcomeUwU.appendChild(options);
 
 }
