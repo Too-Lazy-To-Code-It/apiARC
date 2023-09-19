@@ -60,8 +60,7 @@ export let showData = async (url) => {
     let Objects = await getData(url);
     Objects.data.forEach((Object) => {
         console.log(Object);
-        let EL = ObjectCard(Object);
-        row.appendChild(EL);
+        row.appendChild(ObjectCard(Object));
 
     });
 };
@@ -85,7 +84,7 @@ export let Welcome = () => {
 
 
     let pick = document.createElement("h1");
-    pick.textContent = "Welcome to valoranti would you pick what you want to see ? ";
+    pick.textContent = "Welcome To Valoranti , Would You Pick What You Want To See ? ";
 
     row.parentNode.insertBefore(welcomeUwU,row);
     welcomeUwU.appendChild(pickImg);
