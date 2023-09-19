@@ -1,83 +1,94 @@
-const url = 'https://valorant-api.com/v1/agents/';
+export const ApiAgents = "https://valorant-api.com/v1/agents/";
+export const ApiWeapons = "https://valorant-api.com/v1/weapons";
 const options = {
-    method: 'GET',
+    method: "GET",
     headers: {
-        'agentUuid': "e370fa57-4757-3604-3648-499e1f642d3f"
-    }
+        agentUuid: "e370fa57-4757-3604-3648-499e1f642d3f",
+    },
 };
-let row = document.getElementById("rowproduct");
+export let row = document.getElementById("rowproduct");
 
-
-
-let agents = async () => {
+let getData = async (url) => {
     try {
         const response = await fetch(url);
         const result = await response.json();
         return result;
-
     } catch (error) {
         console.error(error);
         return false;
     }
-}
+};
 
-let AgentCard = (Agent) => {
-    let AgentEl = document.createElement("div");
-    AgentEl.classList.add("card");
-    AgentEl.style.width = "18rem";
+let ObjectCard = (Object) => {
+    let EL = document.createElement("div");
+    EL.classList.add("card");
+    EL.style.width = "18rem";
 
     let AgentImg = document.createElement("img");
-    AgentImg.src = Agent.fullPortrait;
     AgentImg.classList.add("card-img-top");
+    AgentImg.src = Object.displayIcon;
 
-    let CardBody = document.createElement("div")
+    let CardBody = document.createElement("div");
     CardBody.classList.add("card-body");
 
-    let DisplayName = document.createElement("h5")
+    let DisplayName = document.createElement("h5");
     DisplayName.classList.add("card-title");
-    DisplayName.textContent = Agent.displayName;
+    DisplayName.textContent = Object.displayName;
 
     let description = document.createElement("p");
     description.classList.add("card-text");
-    description.textContent = Agent.description;
+    description.textContent = Object.description;
 
-    let Dbutton = document.createElement("a")
+    let Dbutton = document.createElement("a");
     Dbutton.classList.add("btn", "btn-primary");
-    Dbutton.textContent = Agent.displayName;
-
-    AgentEl.appendChild(AgentImg);
-    AgentEl.appendChild(CardBody);
-    AgentEl.appendChild(DisplayName);
-    AgentEl.appendChild(description);
-    AgentEl.appendChild(Dbutton);
-
-    return AgentEl;
-
-}
+    Dbutton.textContent = Object.displayName;
 
 
 
-export let showAgents = async () => {
 
-    let Agents = await agents();
-    (Agents.data).forEach(agent => {
-        console.log(agent);
 
-        const { displayName, description, fullPortrait, role } = agent;
+    EL.append(AgentImg);
+    EL.append(CardBody);
+    CardBody.append(DisplayName);
+    CardBody.append(description);
+    CardBody.append(Dbutton);
 
-        let AgentEl = AgentCard(agent);
+    return EL;
+};
 
-        /* AgentEl.innerHTML = `
-            <img src="${fullPortrait}" class="card-img-top" alt="...">
-            <div class="card-body">
-            <h5 class="card-title">${displayName}</h5>
-            <p class="card-text">${description}</p>
-            <a href="#" class="btn btn-primary">${displayName}</a>
-            </div>
-            `*/
-        row.appendChild(AgentEl);
-        /* if ((anime.title.toLowerCase()).includes("slam"))
-             console.log(anime.title);*/
+export let showData = async (url) => {
+    let Objects = await getData(url);
+    Objects.data.forEach((Object) => {
+        console.log(Object);
+        let EL = ObjectCard(Object);
+        row.appendChild(EL);
 
     });
+};
+
+export let Welcome = () => {
+    let choice = 0;
+    let pickImg = document.createElement("img");
+    pickImg.src = "./1661130727752034.gif";
+    pickImg.style.height = "600px";
+    pickImg.style.width = "600px";
+    let options = document.createElement("select");
+    const optionValues = ["Agents", "Weapons", "Skins", "Ranks"];
+
+
+    optionValues.forEach((value, index) => {
+        const option = document.createElement("option");
+        option.value = index;
+        option.text = value;
+        options.appendChild(option);
+    });
+
+
+    let pick = document.createElement("h1");
+    pick.textContent = "Welcome to valoranti would you pick what you want to see ? ";
+
+    document.body.appendChild(pickImg);
+    document.body.appendChild(pick);
+    document.body.appendChild(options);
+
 }
